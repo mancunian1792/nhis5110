@@ -1,0 +1,12 @@
+Package: nhis5110
+Title: Has the latest NHIS Survey data
+Version: 0.0.0.9000
+Authors@R: person("Harish", "Ramani", email = "ramani.h@husky.neu.edu", role = c("aut", "cre"))
+Description: What the package does (one paragraph).
+Depends: R (>= 3.5.0)
+License: GPL-2 | GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports: dplyr,
+         readr
+RoxygenNote: 6.1.1
