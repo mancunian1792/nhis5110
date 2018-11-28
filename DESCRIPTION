@@ -8,5 +8,6 @@ License: GPL-2 | GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports: dplyr,
-         readr
+         readr,
+         ggplot2
 RoxygenNote: 6.1.1
