@@ -94,7 +94,22 @@ compute_emotion_score <- function(){
    return(dplyr::select(feel_data, neg_emotion_score))
 }
 
+get_yoga_cols <- function(){
+  load_data()
+  yoga_data <- dplyr::select(sampleAdult, starts_with("YTQU"))
+  return(yoga_data)
+}
 
 
+get_medYoga_metadata <- function(){
+  displayName <- c("ASISAD", "ASINERV", "ASIHOPLS", "ASIWTHLS", "ASIEFFRT", "ASIRSTLS", "MBO_MAN1",
+                    "MBO_MND1", "MBO_IMG1", "MBO_SPR1", "MBO_PRO1", "YTQU_YG1", "YTQU_TA1", "YTQU_QG1")
+  values <- c("How often did you feel sad", "How often did you nervous", "How often did you hopeless",
+              "How often did you feel worthless", "How often did you feel everything required effort",
+              "How often did you feel fidgety", "Mantra Meditation", "Mindful meditation", "Guided Imagery", "Spiritual Meditation",
+              "Progressive Relaxation", "Yoga", "Tai Chi", "Qi Gong")
 
+  result <- setNames(as.list(values), displayName)
+  return(result)
+}
 
