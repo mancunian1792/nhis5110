@@ -81,7 +81,7 @@ plot_emotion_data <- function(){
 
 compute_emotion_score <- function(){
   load_data()
-  feel_data <- dplyr::filter_at(sampleAdult, vars(ASISAD:ASIWTHLS), all_vars((. %in% c(1, 2, 3, 4))))
+  feel_data <- dplyr::filter_at(sampleAdult, dplyr::vars(ASISAD:ASIWTHLS), dplyr::all_vars((. %in% c(1, 2, 3, 4))))
    feel_data <- dplyr::mutate(feel_data, ASISAD = (5 - ASISAD) ,
            ASINERV = (5 - ASINERV) ,
            ASIHOPLS = (5 - ASIHOPLS ) ,
@@ -102,9 +102,9 @@ get_yoga_cols <- function(){
 
 
 get_medYoga_metadata <- function(){
-  displayName <- c("ASISAD", "ASINERV", "ASIHOPLS", "ASIWTHLS", "ASIEFFRT", "ASIRSTLS", "MBO_MAN1",
+  values <- c("ASISAD", "ASINERV", "ASIHOPLS", "ASIWTHLS", "ASIEFFRT", "ASIRSTLS", "MBO_MAN1",
                     "MBO_MND1", "MBO_IMG1", "MBO_SPR1", "MBO_PRO1", "YTQU_YG1", "YTQU_TA1", "YTQU_QG1")
-  values <- c("How often did you feel sad", "How often did you nervous", "How often did you hopeless",
+  displayName <- c("How often did you feel sad", "How often did you nervous", "How often did you hopeless",
               "How often did you feel worthless", "How often did you feel everything required effort",
               "How often did you feel fidgety", "Mantra Meditation", "Mindful meditation", "Guided Imagery", "Spiritual Meditation",
               "Progressive Relaxation", "Yoga", "Tai Chi", "Qi Gong")
