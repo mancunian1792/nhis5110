@@ -113,8 +113,3 @@ get_medYoga_metadata <- function(){
   return(result)
 }
 
-get_df_metadata <- function(category){
-  switch(category,
-    "sleep" = get_sleep_metadata(),
-    "meditation" = get_medYoga_metadata())
-  }
