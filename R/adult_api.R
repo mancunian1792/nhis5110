@@ -1,8 +1,4 @@
-# Hello, world!
-#
-# This is an example function named 'hello'
-# which prints 'Hello, world!'.
-#
+
 # You can learn more about package authoring with RStudio at:
 #
 #   http://r-pkgs.had.co.nz/
@@ -13,15 +9,25 @@
 #   Check Package:             'Ctrl + Shift + E'
 #   Test Package:              'Ctrl + Shift + T'
 
-load_data <- function(){
-  load("data/sampleAdult.rda")
-}
+
+#' Get meditation response
+#' Get all columns related to meditation
+#' @return data frame
+#' @export
+#'
+#' @examples get_meditation_response()
 get_meditation_response <- function(){
   load_data()
   adult_set <- dplyr::select(sampleAdult, MBO_MAN1:MBO_PRO1)
   return(adult_set)
 }
 
+#' Plot meditation response
+#' creates a plot for meditation related responses
+#' @return plot
+#' @export
+#'
+#' @examples plot_meditation_response()
 plot_meditation_response <- function(){
   #require(ggplot2)
   med_data <- get_meditation_cols()
@@ -36,6 +42,12 @@ plot_meditation_response <- function(){
 
 }
 
+#' Feelings columns
+#' Get all feelings related columns
+#' @return data frame
+#' @export
+#'
+#' @examples get_feelings_response()
 get_feelings_response <- function(){
   load_data()
   cols <- c("ASISAD", "ASINERV", "ASIHOPLS", "ASIRSTLS", "ASIEFFRT", "ASIWTHLS")
@@ -60,6 +72,14 @@ get_feelings_response <- function(){
   return(feelings_data)
 }
 
+#' Get frequency for each feeling by individual levels
+#'
+#' @param emotion
+#'
+#' @return data frame
+#' @export
+#'
+#' @examples get_freq_table_by_emotion(emotion = c("Nervous", "Fidgety"))
 get_freq_table_by_emotion <- function(emotion){
   #Takes a list of emotions as input - can be one of sad, nervous, worthless, hopeless, fidgety or required effort
 feel_data <- get_feelings_response()
@@ -71,6 +91,12 @@ for(feeling in emotion){
 return(result)
 }
 
+#' Plot feelings data
+#' creates a plot for responses on feelings data
+#' @return plot
+#' @export
+#'
+#' @examples plot_emotion_data()
 plot_emotion_data <- function(){
   feel_data <- get_feelings_response()
   all_feelings <- tidyr::gather(data = feel_data,
@@ -79,9 +105,15 @@ plot_emotion_data <- function(){
   ggplot2::ggplot(all_feelings, aes(x = emotion, fill=frequency)) + geom_bar() + coord_flip()
 }
 
+#' Emotion score
+#' Computes emotion score for each observation in the data frame
+#' @return data frame
+#' @export
+#'
+#' @examples compute_emotion_score()
 compute_emotion_score <- function(){
   load_data()
-  feel_data <- dplyr::filter_at(sampleAdult, vars(ASISAD:ASIWTHLS), all_vars((. %in% c(1, 2, 3, 4))))
+  feel_data <- dplyr::filter_at(sampleAdult, dplyr::vars(ASISAD:ASIWTHLS), dplyr::all_vars((. %in% c(1, 2, 3, 4))))
    feel_data <- dplyr::mutate(feel_data, ASISAD = (5 - ASISAD) ,
            ASINERV = (5 - ASINERV) ,
            ASIHOPLS = (5 - ASIHOPLS ) ,
@@ -94,17 +126,28 @@ compute_emotion_score <- function(){
    return(dplyr::select(feel_data, neg_emotion_score))
 }
 
+#' Get yoga columns
+#' Get all yoga related columns
+#' @return data frame
+#' @export
+#'
+#' @examples get_yoga_cols()
 get_yoga_cols <- function(){
   load_data()
   yoga_data <- dplyr::select(sampleAdult, starts_with("YTQU"))
   return(yoga_data)
 }
 
-
+#' Get metadata for yoga
+#' returns a list of column names and their respective summary/label
+#' @return list
+#' @export
+#'
+#' @examples get_medYoga_metadata()
 get_medYoga_metadata <- function(){
-  displayName <- c("ASISAD", "ASINERV", "ASIHOPLS", "ASIWTHLS", "ASIEFFRT", "ASIRSTLS", "MBO_MAN1",
+  values <- c("ASISAD", "ASINERV", "ASIHOPLS", "ASIWTHLS", "ASIEFFRT", "ASIRSTLS", "MBO_MAN1",
                     "MBO_MND1", "MBO_IMG1", "MBO_SPR1", "MBO_PRO1", "YTQU_YG1", "YTQU_TA1", "YTQU_QG1")
-  values <- c("How often did you feel sad", "How often did you nervous", "How often did you hopeless",
+  displayName <- c("How often did you feel sad", "How often did you nervous", "How often did you hopeless",
               "How often did you feel worthless", "How often did you feel everything required effort",
               "How often did you feel fidgety", "Mantra Meditation", "Mindful meditation", "Guided Imagery", "Spiritual Meditation",
               "Progressive Relaxation", "Yoga", "Tai Chi", "Qi Gong")
