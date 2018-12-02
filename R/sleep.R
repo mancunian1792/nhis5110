@@ -156,12 +156,12 @@ compute_Sleepscore <- function(){
 }
 
 get_sleep_metadata <- function(){
-  displayName <- c("HHX, FMX, FPX, SEX, HYBPLEV, AHSTATYR,
-                   SMKSTAT2, ASIRETR, ASIMEDC, ASICNHC, ASINBILL,
-                   ASICCOLL, ASIHCST, ASICCMP, ASIWTHLS, DIBTYPE,
-                   CIGSDA1, R_MARITL, PHSTAT, PDMED12M, MCPART,
-                   PLBORN, CITIZENP, WRKHRS2, PNMED12M, GEOBRTH")
-  values <- c("Household Number", "Family Number", "Male or Female",
+  values <- c("HHX", "FMX", "FPX", "SEX", "HYBPLEV", "AHSTATYR",
+                   "SMKSTAT2", "ASIRETR", "ASIMEDC", "ASICNHC", "ASINBILL",
+                   "ASICCOLL", "ASIHCST", "ASICCMP", "ASIWTHLS", "DIBTYPE",
+                   "CIGSDA1", "R_MARITL", "PHSTAT", "PDMED12M", "MCPART",
+                   "PLBORN", "CITIZENP", "WRKHRS2", "PNMED12M", "GEOBRTH")
+  displayName <- c("Household Number", "Family Number", "Person Number", "Male or Female",
               "At that time, were you told that your blood pressure was high, normal, or low?",
               "Compared with 12 MONTHS AGO, would you say your health is better, worse, or about the same?",
               "Have you smoked at least 100 cigarettes in your ENTIRE LIFE? ",
