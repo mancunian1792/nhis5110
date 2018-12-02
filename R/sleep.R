@@ -23,7 +23,7 @@ get_sleep_data <- function(){
   adult_sleep_set <- dplyr::select(sampleAdult, HHX, FMX, FPX, SEX, HYBPLEV,
                                    AHSTATYR, SMKSTAT2, ASIRETR, ASIMEDC, ASICNHC,
                                    ASINBILL, ASICCOLL, ASIHCST, ASICCMP, ASIWTHLS,
-                                   DIBTYPE, CIGSDA1,
+                                   DIBTYPE, CIGSDA1
 
                                    # ONEJOB, LOCALL1B, HYPDIFV,
                                    # PREGNOW, CHPAIN6M,
@@ -35,7 +35,7 @@ get_sleep_data <- function(){
 
   person_sleep_set <- dplyr::select(nhisPerson, HHX, FMX, FPX, R_MARITL, PHSTAT,
                                     PDMED12M, MCPART, PLBORN, CITIZENP, WRKHRS2,
-                                    PNMED12M, GEOBRTH,
+                                    PNMED12M, GEOBRTH
 
                                     # PHCDVN2W, NOTCOV, HCSPFYR, MEDBNOP,
                                     # WRKFTALL, ERNYR_P, PSAL, PSEINC, PSSRR,
@@ -153,4 +153,39 @@ compute_Sleepscore <- function(){
                                                       oneRow[4],
                                                       oneRow[5]))
   return(sleep_score)
+}
+
+get_sleep_metadata <- function(){
+  displayName <- c("HHX, FMX, FPX, SEX, HYBPLEV, AHSTATYR,
+                   SMKSTAT2, ASIRETR, ASIMEDC, ASICNHC, ASINBILL,
+                   ASICCOLL, ASIHCST, ASICCMP, ASIWTHLS, DIBTYPE,
+                   CIGSDA1, R_MARITL, PHSTAT, PDMED12M, MCPART,
+                   PLBORN, CITIZENP, WRKHRS2, PNMED12M, GEOBRTH")
+  values <- c("Household Number", "Family Number", "Male or Female",
+              "At that time, were you told that your blood pressure was high, normal, or low?",
+              "Compared with 12 MONTHS AGO, would you say your health is better, worse, or about the same?",
+              "Have you smoked at least 100 cigarettes in your ENTIRE LIFE? ",
+              "How worried are you right now about not having enough money for retirement?",
+              "How worried are you right now about not being able to pay medical costs of a serious illness or accident?",
+              "How worried are you right now about not being able to pay medical costs for normal healthcare?",
+              "How worried are you right now about not having enough to pay your normal monthly bills?",
+              "How worried are you right now about not having enough money to pay for your children's college?",
+              "How worried are you right now about not being able to pay your rent, mortgage, or other housing costs?",
+              "How worried are you right now about not being able to make the minimum payments on your credit cards?",
+              "During the PAST 30 DAYS, how often did you feel...worthless?",
+              "What type of diabetes do you have?",
+              "On the average, how many cigarettes do you now smoke a day?",
+              "(Are/Is)(you/person) now married, widowed, divorced, separated, never married, or living with a partner?",
+              "Would you say your health in general is excellent, very good, good, fair, or poor?",
+              "DURING THE PAST 12 MONTHS, has medical care been delayed for {person} because of worry about the cost?",
+              "What type of Medicare {do you/does person} have? Is it Part A - hospital insurance, Part B - medical insurance, or both?",
+              "Were you born in the United States?",
+              "Are you a CITIZEN of the United States?",
+              "How many hours do you USUALLY work at ALL jobs or businesses?",
+              "DURING THE PAST 12 MONTHS, was there any time when you needed medical care, but did not get it because you couldn't afford it?",
+              "Geographic place of birth"
+              )
+
+  result <- setNames(as.list(values), displayName)
+  return(result)
 }
