@@ -172,5 +172,5 @@ get_df_metadata <- function(name){
          "refinedSleepSet" = get_sleep_metadata(),
          "medYoga" = get_medYoga_metadata(),
          "afford_healthcare" = get_afford_metadata(),
-         print("Not a valid category"))
+          print("Not a valid category"))
 }
