@@ -17,6 +17,7 @@
 #'
 #' @examples get_meditation_response()
 get_meditation_response <- function(){
+
   load_data()
   adult_set <- dplyr::select(sampleAdult, MBO_MAN1:MBO_PRO1)
   return(adult_set)
@@ -145,6 +146,7 @@ get_yoga_cols <- function(){
 #'
 #' @examples get_medYoga_metadata()
 get_medYoga_metadata <- function(){
+
   values <- c("ASISAD", "ASINERV", "ASIHOPLS", "ASIWTHLS", "ASIEFFRT", "ASIRSTLS", "MBO_MAN1",
                     "MBO_MND1", "MBO_IMG1", "MBO_SPR1", "MBO_PRO1", "YTQU_YG1", "YTQU_TA1", "YTQU_QG1")
   displayName <- c("How often did you feel sad", "How often did you nervous", "How often did you hopeless",
@@ -156,3 +158,17 @@ get_medYoga_metadata <- function(){
   return(result)
 }
 
+#' Wrapper for calling appropriate metadata functions
+#'
+#' @param category
+#'
+#' @return appropriate function is called based on category
+#' @export
+#'
+#' @examples get_df_metadata(category = "sleep")
+get_df_metadata <- function(category){
+  switch(category,
+    "sleep" = get_sleep_metadata(),
+    "meditation" = get_medYoga_metadata(),
+    print("Not a valid category"))
+}
