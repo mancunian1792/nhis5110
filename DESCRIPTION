@@ -9,5 +9,6 @@ Encoding: UTF-8
 LazyData: true
 Imports: dplyr,
          readr,
-         ggplot2
+         ggplot2,
+         naniar
 RoxygenNote: 6.1.1
