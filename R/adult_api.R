@@ -166,10 +166,11 @@ get_medYoga_metadata <- function(){
 #' @return appropriate function is called based on category
 #' @export
 #'
-#' @examples get_df_metadata(category = "sleep")
-get_df_metadata <- function(category){
-  switch(category,
-         "sleep" = get_sleep_metadata(),
-         "meditation" = get_medYoga_metadata(),
+#' @examples get_df_metadata(name = "refinedSleepSet")
+get_df_metadata <- function(name){
+  switch(name,
+         "refinedSleepSet" = get_sleep_metadata(),
+         "medYoga" = get_medYoga_metadata(),
+         "afford_healthcare" = get_afford_metadata(),
          print("Not a valid category"))
 }
