@@ -1,7 +1,6 @@
-
-#' Plot based on Affordability score and age group
-#'
-#' @return Bar Plot
+#'Plot age group and affordability
+#'Plots the age group and affordability of dental care and eyeglasses across age groups.
+#' @return plot
 #' @export
 #'
 #' @examples plot_afford_score()
